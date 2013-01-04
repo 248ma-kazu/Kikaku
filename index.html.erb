@@ -1,0 +1,33 @@
+<h1>投稿内容</h1>
+
+<table border="1" width="1300" cellspacing="0" cellpadding="5" bordercolor="#333333">
+  <tr>
+    <th bgcolor="#EE0000"><font color="#FFFFFF">投稿者</font></th>
+	<th bgcolor="#EE0000" width="150"><font color="#FFFFFF">日付</font></th>
+	<th bgcolor="#EE0000" width="150"><font color="#FFFFFF">題名</font></th>
+	<th bgcolor="#EE0000" width="200"><font color="#FFFFFF">タグ</font></th>
+	<th bgcolor="#EE0000" width="200"><font color="#FFFFFF">場所</font></th>
+	<th bgcolor="#EE0000" width="800"><font color="#FFFFFF">内容</font></th>
+	<th bgcolor="#EE0000" width="100"><font color="#FFFFFF"></font></th>
+	<th bgcolor="#EE0000" width="100"><font color="#FFFFFF"></font></th>
+	<th bgcolor="#EE0000" width="100"><font color="#FFFFFF"></font></th>
+  </tr>
+
+<% @friends.each do |friend| %>
+  <tr>
+    <td bgcolor="#99CC00" align="right" nowrap><%= friend.name %></td>
+    <td bgcolor="#FFFFFF" valign="top" width="150"><%= friend.date %></td>
+    <td bgcolor="#FFFFFF" valign="top" width="200"><%= friend.title %></td>
+    <td bgcolor="#FFFFFF" valign="top" width="200"><%= friend.tagu %></td>
+    <td bgcolor="#FFFFFF" valign="top" width="200"><%= friend.place %></td>
+    <td bgcolor="#FFFFFF" valign="top" width="800"><%= friend.naiyo %></td>
+    <td><%= link_to '内容を確認する', friend %></td>
+    <td><%= link_to '編集', edit_friend_path(friend) %></td>
+    <td><%= link_to '削除', friend, method: :delete, data: { confirm: '削除いたしますか？' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to '投稿する', new_friend_path %>
